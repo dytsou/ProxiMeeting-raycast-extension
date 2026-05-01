@@ -25,6 +25,12 @@
       "title": "NextMeeting — Open Preferences",
       "description": "Open NextMeeting Preferences (Settings window).",
       "mode": "no-view"
+    },
+    {
+      "name": "get-started",
+      "title": "NextMeeting — Get Started",
+      "description": "Install NextMeeting via Homebrew and learn first-run basics.",
+      "mode": "view"
     }
   ],
   "dependencies": {

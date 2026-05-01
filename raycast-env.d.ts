@@ -19,6 +19,8 @@ declare namespace Preferences {
   export type OpenPopover = ExtensionPreferences & {}
   /** Preferences accessible in the `open-preferences` command */
   export type OpenPreferences = ExtensionPreferences & {}
+  /** Preferences accessible in the `get-started` command */
+  export type GetStarted = ExtensionPreferences & {}
 }
 
 declare namespace Arguments {
@@ -28,5 +30,7 @@ declare namespace Arguments {
   export type OpenPopover = {}
   /** Arguments passed to the `open-preferences` command */
   export type OpenPreferences = {}
+  /** Arguments passed to the `get-started` command */
+  export type GetStarted = {}
 }
 
