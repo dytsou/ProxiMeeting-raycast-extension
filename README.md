@@ -9,6 +9,7 @@
 ## Commands
 
 - **NextMeeting — Get Started** (install via Homebrew + first-run guidance)
+- **NextMeeting — Update** (upgrade via Homebrew + open GitHub Releases)
 - **NextMeeting — Refresh**
 - **NextMeeting — Open Popover**
 - **NextMeeting — Open Preferences**
@@ -31,6 +32,25 @@ Homebrew commands:
 brew tap dytsou/nextmeeting
 brew install --cask nextmeeting
 ```
+
+## Update (Homebrew + Releases)
+
+Like **Get Started**, the **Update** command intentionally **does not** run Homebrew commands inside Raycast.
+
+Typical Homebrew upgrade:
+
+```bash
+brew upgrade --cask nextmeeting
+```
+
+If upgrading fails (common troubleshooting starting point):
+
+```bash
+brew update
+brew upgrade --cask nextmeeting --verbose
+```
+
+If `brew upgrade` isn’t suitable for your machine, open **GitHub Releases** via the Raycast command and update manually.
 
 ## Development
 

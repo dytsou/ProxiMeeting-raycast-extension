@@ -31,6 +31,12 @@
       "title": "NextMeeting — Get Started",
       "description": "Install NextMeeting via Homebrew and learn first-run basics.",
       "mode": "view"
+    },
+    {
+      "name": "update",
+      "title": "NextMeeting — Update",
+      "description": "Update NextMeeting via Homebrew or open releases.",
+      "mode": "view"
     }
   ],
   "dependencies": {

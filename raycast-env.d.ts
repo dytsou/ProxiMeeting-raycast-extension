@@ -21,6 +21,8 @@ declare namespace Preferences {
   export type OpenPreferences = ExtensionPreferences & {}
   /** Preferences accessible in the `get-started` command */
   export type GetStarted = ExtensionPreferences & {}
+  /** Preferences accessible in the `update` command */
+  export type Update = ExtensionPreferences & {}
 }
 
 declare namespace Arguments {
@@ -32,5 +34,7 @@ declare namespace Arguments {
   export type OpenPreferences = {}
   /** Arguments passed to the `get-started` command */
   export type GetStarted = {}
+  /** Arguments passed to the `update` command */
+  export type Update = {}
 }
 
