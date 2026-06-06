@@ -12,10 +12,10 @@ import {
 import { useEffect, useMemo, useState } from "react";
 import { detectBrew, type BrewDetection } from "./lib/detect";
 
-const UPGRADE_CMD = "brew upgrade --cask nextmeeting";
+const UPGRADE_CMD = "brew upgrade --cask proximeeting";
 const REFRESH_METADATA_CMD = "brew update";
 
-const RELEASES_URL = "https://github.com/dytsou/NextMeeting/releases";
+const RELEASES_URL = "https://github.com/dytsou/ProxiMeeting/releases";
 
 type LoadState =
   | { kind: "loading" }
@@ -44,7 +44,7 @@ export default function Command() {
   if (state.kind === "error") {
     return (
       <Detail
-        navigationTitle="NextMeeting — Update"
+        navigationTitle="ProxiMeeting — Update"
         markdown={["## Something went wrong", "", state.message].join("\n")}
       />
     );
@@ -52,7 +52,7 @@ export default function Command() {
 
   if (state.kind === "loading") {
     return (
-      <List isLoading navigationTitle="NextMeeting — Update">
+      <List isLoading navigationTitle="ProxiMeeting — Update">
         <List.EmptyView title="Checking Homebrew detection…" icon={Icon.Gear} />
       </List>
     );
@@ -61,7 +61,7 @@ export default function Command() {
   const { brew } = state;
 
   return (
-    <List navigationTitle="NextMeeting — Update">
+    <List navigationTitle="ProxiMeeting — Update">
       <List.Item
         title="Update via Homebrew (recommended if you installed via cask)"
         subtitle="Copy commands + open Terminal"
@@ -81,7 +81,7 @@ export default function Command() {
             />
             <Action title="Open Terminal" icon={Icon.Terminal} onAction={openTerminal} />
             <Action.OpenInBrowser title="Open GitHub Releases" url={RELEASES_URL} />
-            <Action.OpenInBrowser title="Open README upgrade section" url="https://github.com/dytsou/NextMeeting#upgrade-with-homebrew" />
+            <Action.OpenInBrowser title="Open README upgrade section" url="https://github.com/dytsou/ProxiMeeting#upgrade-with-homebrew" />
           </ActionPanel>
         }
       />
@@ -164,7 +164,7 @@ function ConfirmHomebrewUpgrade({ brew }: { brew: BrewDetection }) {
             onAction={async () => safeCopyToClipboard(troubleshootBlock)}
           />
           <Action title="Open Terminal" icon={Icon.Terminal} onAction={openTerminal} />
-          <Action.OpenInBrowser title="Open README troubleshooting" url="https://github.com/dytsou/NextMeeting#if-the-upgrade-fails-try" />
+          <Action.OpenInBrowser title="Open README troubleshooting" url="https://github.com/dytsou/ProxiMeeting#if-the-upgrade-fails-try" />
           <Action.OpenInBrowser title="Open GitHub Releases" url={RELEASES_URL} />
         </ActionPanel>
       }

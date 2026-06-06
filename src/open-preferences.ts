@@ -1,6 +1,6 @@
 import { open, showHUD } from "@raycast/api";
 
 export default async function Command() {
-  await open("nextmeeting://open-preferences");
-  await showHUD("NextMeeting: opened Preferences");
+  await open("proximeeting://open-preferences");
+  await showHUD("ProxiMeeting: opened Preferences");
 }

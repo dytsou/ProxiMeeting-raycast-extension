@@ -1,22 +1,22 @@
-# NextMeeting Extension
+# ProxiMeeting Extension
 
 ## Deep links used
 
-- **Refresh**: `nextmeeting://refresh`
-- **Open popover**: `nextmeeting://open-popover`
-- **Open Preferences**: `nextmeeting://open-preferences`
+- **Refresh**: `proximeeting://refresh`
+- **Open popover**: `proximeeting://open-popover`
+- **Open Preferences**: `proximeeting://open-preferences`
 
 ## Commands
 
-- **NextMeeting — Get Started** (install via Homebrew + first-run guidance)
-- **NextMeeting — Update** (upgrade via Homebrew + open GitHub Releases)
-- **NextMeeting — Refresh**
-- **NextMeeting — Open Popover**
-- **NextMeeting — Open Preferences**
+- **ProxiMeeting — Get Started** (install via Homebrew + first-run guidance)
+- **ProxiMeeting — Update** (upgrade via Homebrew + open GitHub Releases)
+- **ProxiMeeting — Refresh**
+- **ProxiMeeting — Open Popover**
+- **ProxiMeeting — Open Preferences**
 
 ## Troubleshooting
 
-- If the commands run but nothing happens, first **launch NextMeeting once** so macOS registers the `nextmeeting://` URL scheme. Then try again.
+- If the commands run but nothing happens, first **launch ProxiMeeting once** so macOS registers the `proximeeting://` URL scheme. Then try again.
 
 ## Get Started (Homebrew install)
 
@@ -29,28 +29,9 @@ This command intentionally **does not** run `brew install` inside Raycast. Inste
 Homebrew commands:
 
 ```bash
-brew tap dytsou/nextmeeting
-brew install --cask nextmeeting
+brew tap dytsou/proximeeting
+brew install --cask proximeeting
 ```
-
-## Update (Homebrew + Releases)
-
-Like **Get Started**, the **Update** command intentionally **does not** run Homebrew commands inside Raycast.
-
-Typical Homebrew upgrade:
-
-```bash
-brew upgrade --cask nextmeeting
-```
-
-If upgrading fails (common troubleshooting starting point):
-
-```bash
-brew update
-brew upgrade --cask nextmeeting --verbose
-```
-
-If `brew upgrade` isn’t suitable for your machine, open **GitHub Releases** via the Raycast command and update manually.
 
 ## Development
 

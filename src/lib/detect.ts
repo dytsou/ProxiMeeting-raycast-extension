@@ -37,11 +37,11 @@ export async function detectBrew(): Promise<BrewDetection> {
   return { kind: "missing", tried };
 }
 
-export async function isNextMeetingAppPresent(): Promise<boolean> {
+export async function isProxiMeetingAppPresent(): Promise<boolean> {
   // Primary v1 signal: app bundle present in /Applications.
   // Avoid requiring brew to be detectable from Raycast environment.
   try {
-    await access("/Applications/NextMeeting.app", constants.F_OK);
+    await access("/Applications/ProxiMeeting.app", constants.F_OK);
     return true;
   } catch {
     return false;

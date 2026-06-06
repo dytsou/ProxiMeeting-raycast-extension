@@ -10,10 +10,10 @@ import {
   showToast
 } from "@raycast/api";
 import { useEffect, useMemo, useState } from "react";
-import { detectBrew, isNextMeetingAppPresent, type BrewDetection } from "./lib/detect";
+import { detectBrew, isProxiMeetingAppPresent, type BrewDetection } from "./lib/detect";
 
-const TAP_CMD = "brew tap dytsou/nextmeeting";
-const INSTALL_CMD = "brew install --cask nextmeeting";
+const TAP_CMD = "brew tap dytsou/proximeeting";
+const INSTALL_CMD = "brew install --cask proximeeting";
 const INSTALL_BLOCK = [TAP_CMD, INSTALL_CMD].join("\n");
 
 type StepState =
@@ -28,7 +28,7 @@ export default function Command() {
     let cancelled = false;
     (async () => {
       try {
-        const [brew, appPresent] = await Promise.all([detectBrew(), isNextMeetingAppPresent()]);
+        const [brew, appPresent] = await Promise.all([detectBrew(), isProxiMeetingAppPresent()]);
         if (!cancelled) setState({ kind: "ready", brew, appPresent });
       } catch (err) {
         const message = err instanceof Error ? err.message : "Unknown error";
@@ -43,7 +43,7 @@ export default function Command() {
   if (state.kind === "error") {
     return (
       <Detail
-        navigationTitle="NextMeeting — Get Started"
+        navigationTitle="ProxiMeeting — Get Started"
         markdown={["## Something went wrong", "", state.message].join("\n")}
       />
     );
@@ -51,17 +51,17 @@ export default function Command() {
 
   if (state.kind === "loading") {
     return (
-      <List isLoading navigationTitle="NextMeeting — Get Started">
+      <List isLoading navigationTitle="ProxiMeeting — Get Started">
         <List.EmptyView title="Checking your system…" icon={Icon.Gear} />
       </List>
     );
   }
 
   const { brew, appPresent } = state;
-  const installPrimaryTitle = appPresent ? "Open NextMeeting (menu bar app)" : "Install NextMeeting via Homebrew";
+  const installPrimaryTitle = appPresent ? "Open ProxiMeeting (menu bar app)" : "Install ProxiMeeting via Homebrew";
 
   return (
-    <List navigationTitle="NextMeeting — Get Started">
+    <List navigationTitle="ProxiMeeting — Get Started">
       <List.Item
         title={installPrimaryTitle}
         subtitle={appPresent ? "Already installed" : "Copy commands + open Terminal"}
@@ -70,7 +70,7 @@ export default function Command() {
           <ActionPanel>
             {appPresent ? (
               <>
-                <Action title="Open NextMeeting" icon={Icon.Play} onAction={openNextMeeting} />
+                <Action title="Open ProxiMeeting" icon={Icon.Play} onAction={openProxiMeeting} />
                 <Action.Push title="Where is it?" icon={Icon.MagnifyingGlass} target={<MenuBarExplainer />} />
                 <Action.Push title="First launch & security" icon={Icon.Shield} target={<FirstLaunchSecurity />} />
               </>
@@ -94,8 +94,8 @@ export default function Command() {
             )}
             <Action.OpenInBrowser title="Open Homebrew website" url="https://brew.sh" />
             <Action.OpenInBrowser
-              title="Open NextMeeting install docs (README)"
-              url="https://github.com/dytsou/NextMeeting#2-install-with-homebrew"
+              title="Open ProxiMeeting install docs (README)"
+              url="https://github.com/dytsou/ProxiMeeting#2-install-with-homebrew"
             />
           </ActionPanel>
         }
@@ -127,13 +127,13 @@ export default function Command() {
           }
         />
         <List.Item
-          title="NextMeeting.app"
+          title="ProxiMeeting.app"
           icon={appPresent ? Icon.CheckCircle : Icon.XMarkCircle}
-          subtitle={appPresent ? "/Applications/NextMeeting.app" : "Not found in /Applications"}
+          subtitle={appPresent ? "/Applications/ProxiMeeting.app" : "Not found in /Applications"}
           actions={
             <ActionPanel>
               {appPresent ? (
-                <Action title="Open NextMeeting" icon={Icon.Play} onAction={openNextMeeting} />
+                <Action title="Open ProxiMeeting" icon={Icon.Play} onAction={openProxiMeeting} />
               ) : (
                 <Action.Push title="Review install commands" icon={Icon.Clipboard} target={<ConfirmInstallCommands brew={brew} />} />
               )}
@@ -153,7 +153,7 @@ function ConfirmInstallCommands({ brew }: { brew: BrewDetection }) {
 
   return (
     <Detail
-      navigationTitle="Install NextMeeting"
+      navigationTitle="Install ProxiMeeting"
       markdown={[
         "## We’ll run two Homebrew commands",
         "",
@@ -178,7 +178,7 @@ function ConfirmInstallCommands({ brew }: { brew: BrewDetection }) {
             }}
           />
           <Action title="Open Terminal" icon={Icon.Terminal} onAction={openTerminal} />
-          <Action.OpenInBrowser title="Open install docs (README)" url="https://github.com/dytsou/NextMeeting#2-install-with-homebrew" />
+          <Action.OpenInBrowser title="Open install docs (README)" url="https://github.com/dytsou/ProxiMeeting#2-install-with-homebrew" />
         </ActionPanel>
       }
     />
@@ -188,16 +188,16 @@ function ConfirmInstallCommands({ brew }: { brew: BrewDetection }) {
 function MenuBarExplainer() {
   return (
     <Detail
-      navigationTitle="Where is NextMeeting?"
+      navigationTitle="Where is ProxiMeeting?"
       markdown={[
-        "## NextMeeting is a menu bar app",
+        "## ProxiMeeting is a menu bar app",
         "",
-        "- Look for the NextMeeting icon in the macOS **menu bar** (top-right, near the clock).",
+        "- Look for the ProxiMeeting icon in the macOS **menu bar** (top-right, near the clock).",
         "- It may not appear in the Dock after launch — that’s normal for menu bar apps."
       ].join("\n")}
       actions={
         <ActionPanel>
-          <Action title="Open NextMeeting" icon={Icon.Play} onAction={openNextMeeting} />
+          <Action title="Open ProxiMeeting" icon={Icon.Play} onAction={openProxiMeeting} />
         </ActionPanel>
       }
     />
@@ -214,7 +214,7 @@ function FirstLaunchSecurity() {
         "On first launch, macOS may show a Gatekeeper warning for apps that aren’t notarized.",
         "",
         "Use the standard macOS flow:",
-        "- Finder → Applications → NextMeeting → Control-click → **Open**",
+        "- Finder → Applications → ProxiMeeting → Control-click → **Open**",
         "- Or System Settings → Privacy & Security → **Open Anyway** (when shown)",
         "",
         "We won’t bypass macOS security — this is the normal “Open Anyway” path."
@@ -223,7 +223,7 @@ function FirstLaunchSecurity() {
         <ActionPanel>
           <Action.OpenInBrowser
             title="Open full README security section"
-            url="https://github.com/dytsou/NextMeeting#first-launch-and-security"
+            url="https://github.com/dytsou/ProxiMeeting#first-launch-and-security"
           />
         </ActionPanel>
       }
@@ -236,7 +236,7 @@ async function openTerminal() {
   await open("/System/Applications/Utilities/Terminal.app");
 }
 
-async function openNextMeeting() {
-  await open("/Applications/NextMeeting.app");
+async function openProxiMeeting() {
+  await open("/Applications/ProxiMeeting.app");
 }
 
